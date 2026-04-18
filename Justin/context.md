@@ -1,7 +1,7 @@
 # Justin — Claude Code Context
 
 ## About
-Justin is the primary user of this Claude Code setup on this machine. Others (Teresa, Ryan, Austin) may use Claude Code from their own subfolders under `~/Documents/claude/`.
+Justin is the primary user of this Claude Code setup on this machine. Others (Teresa, Ryan, Austin) may use Claude Code from their own subfolders under `~/Documents/Claude/`.
 
 ## GitHub
 - **Account:** justingray1-claude
@@ -24,4 +24,4 @@ Justin is the primary user of this Claude Code setup on this machine. Others (Te
 - Casual setup — shares this Mac with others but uses separate Anthropic accounts and working directories for isolation
 
 ## Working Directory
-- Justin's working directory: `~/Documents/claude/Justin/`
+- Justin's working directory: `~/Documents/Claude/Justin/`
