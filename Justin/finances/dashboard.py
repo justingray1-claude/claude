@@ -18,16 +18,53 @@ from retirement_sim import run_simulation
 
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Retirement Simulator",
-    page_icon="📈",
+    page_title="Gray Matters — Retirement Simulator",
+    page_icon="🧠",
     layout="wide",
 )
 
-st.title("Retirement Monte Carlo Simulator")
-st.caption("Adjust the dials to see how changes affect your probability of success.")
+LOGO_SVG = """
+<svg width="210" height="64" viewBox="0 0 210 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left hemisphere -->
+  <path d="M6,33 C5,19 13,7 24,6 C28,1 37,1 42,7 C47,2 57,5 59,14
+           C66,11 71,18 69,26 C74,31 72,43 65,45 C64,52 56,56 49,51
+           C45,57 36,57 31,51 C24,56 13,51 9,43 C5,40 5,37 6,33 Z"
+        fill="#8e9eab"/>
+  <!-- Left gyri -->
+  <path d="M17,17 Q30,11 41,17" stroke="#cfd8dc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M12,31 Q30,24 46,31" stroke="#cfd8dc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M17,43 Q30,38 42,43" stroke="#cfd8dc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Center divider (corpus callosum gap) -->
+  <line x1="70" y1="8" x2="70" y2="56" stroke="#ecf0f1" stroke-width="2"/>
+  <!-- Right hemisphere -->
+  <path d="M74,33 C73,19 81,7 92,6 C96,1 105,1 110,7 C115,2 125,5 127,14
+           C134,11 139,18 137,26 C142,31 140,43 133,45 C132,52 124,56 117,51
+           C113,57 104,57 99,51 C92,56 81,51 77,43 C73,40 73,37 74,33 Z"
+        fill="#78909c"/>
+  <!-- Right gyri -->
+  <path d="M85,17 Q98,11 109,17" stroke="#b0bec5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M80,31 Q98,24 114,31" stroke="#b0bec5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M85,43 Q98,38 110,43" stroke="#b0bec5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Wordmark -->
+  <text x="152" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="22"
+        font-weight="800" fill="#2c3e50" letter-spacing="1" text-anchor="middle">GRAY</text>
+  <text x="152" y="46" font-family="'Segoe UI',Arial,sans-serif" font-size="13"
+        font-weight="400" fill="#78909c" letter-spacing="5" text-anchor="middle">MATTERS</text>
+</svg>
+"""
+
+st.markdown(
+    f'<div style="margin-bottom:0.5rem">{LOGO_SVG}</div>',
+    unsafe_allow_html=True,
+)
+st.caption("Retirement Monte Carlo Simulator — adjust the dials to see your probability of success.")
 
 # ── Sidebar controls ─────────────────────────────────────────────────────────
 with st.sidebar:
+    st.markdown(
+        f'<div style="padding:0.5rem 0 1rem 0">{LOGO_SVG}</div>',
+        unsafe_allow_html=True,
+    )
     st.header("Your Numbers")
 
     st.subheader("Portfolio")
