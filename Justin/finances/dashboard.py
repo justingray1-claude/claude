@@ -4,6 +4,7 @@ Retirement Monte Carlo — Streamlit Dashboard
 Run with:  streamlit run finances/dashboard.py
 """
 
+import base64
 import sys
 from pathlib import Path
 
@@ -92,18 +93,15 @@ LOGO_SVG = """
 </svg>
 """
 
-st.markdown(
-    f'<div style="margin-bottom:0.5rem">{LOGO_SVG}</div>',
-    unsafe_allow_html=True,
-)
+_logo_b64 = base64.b64encode(LOGO_SVG.strip().encode()).decode()
+_logo_img = f'<img src="data:image/svg+xml;base64,{_logo_b64}" width="230">'
+
+st.markdown(_logo_img, unsafe_allow_html=True)
 st.caption("Retirement Monte Carlo Simulator — adjust the dials to see your probability of success.")
 
 # ── Sidebar controls ─────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown(
-        f'<div style="padding:0.5rem 0 1rem 0">{LOGO_SVG}</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown(_logo_img, unsafe_allow_html=True)
     st.header("Your Numbers")
 
     st.subheader("Portfolio")
