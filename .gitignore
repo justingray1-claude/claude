@@ -1,0 +1,6 @@
+# Ignore any files with tokens or secrets
+*.env
+secrets.*
+
+# Mac system files
+.DS_Store
