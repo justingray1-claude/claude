@@ -25,6 +25,8 @@ st.set_page_config(
 
 LOGO_SVG = """
 <svg width="230" height="72" viewBox="0 0 230 72" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background so logo is readable in both light and dark mode -->
+  <rect width="230" height="72" rx="10" fill="#1e2530"/>
   <defs>
     <linearGradient id="lg" x1="0%" y1="0%" x2="60%" y2="100%">
       <stop offset="0%" stop-color="#a8b8c3"/>
@@ -81,11 +83,11 @@ LOGO_SVG = """
 
   <!-- Wordmark -->
   <text x="183" y="31" font-family="'Segoe UI',Arial,sans-serif"
-        font-size="24" font-weight="800" fill="#2c3e50" letter-spacing="2"
+        font-size="24" font-weight="800" fill="#ecf0f1" letter-spacing="2"
         text-anchor="middle">GRAY</text>
   <line x1="155" y1="38" x2="211" y2="38" stroke="#90a4ae" stroke-width="1.2"/>
   <text x="183" y="54" font-family="'Segoe UI',Arial,sans-serif"
-        font-size="13" font-weight="700" fill="#37474f" letter-spacing="4"
+        font-size="13" font-weight="700" fill="#90a4ae" letter-spacing="4"
         text-anchor="middle">MATTERS</text>
 </svg>
 """
