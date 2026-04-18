@@ -24,32 +24,69 @@ st.set_page_config(
 )
 
 LOGO_SVG = """
-<svg width="210" height="64" viewBox="0 0 210 64" xmlns="http://www.w3.org/2000/svg">
-  <!-- Left hemisphere -->
-  <path d="M6,33 C5,19 13,7 24,6 C28,1 37,1 42,7 C47,2 57,5 59,14
-           C66,11 71,18 69,26 C74,31 72,43 65,45 C64,52 56,56 49,51
-           C45,57 36,57 31,51 C24,56 13,51 9,43 C5,40 5,37 6,33 Z"
-        fill="#8e9eab"/>
-  <!-- Left gyri -->
-  <path d="M17,17 Q30,11 41,17" stroke="#cfd8dc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <path d="M12,31 Q30,24 46,31" stroke="#cfd8dc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <path d="M17,43 Q30,38 42,43" stroke="#cfd8dc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <!-- Center divider (corpus callosum gap) -->
-  <line x1="70" y1="8" x2="70" y2="56" stroke="#ecf0f1" stroke-width="2"/>
-  <!-- Right hemisphere -->
-  <path d="M74,33 C73,19 81,7 92,6 C96,1 105,1 110,7 C115,2 125,5 127,14
-           C134,11 139,18 137,26 C142,31 140,43 133,45 C132,52 124,56 117,51
-           C113,57 104,57 99,51 C92,56 81,51 77,43 C73,40 73,37 74,33 Z"
-        fill="#78909c"/>
-  <!-- Right gyri -->
-  <path d="M85,17 Q98,11 109,17" stroke="#b0bec5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <path d="M80,31 Q98,24 114,31" stroke="#b0bec5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <path d="M85,43 Q98,38 110,43" stroke="#b0bec5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<svg width="230" height="72" viewBox="0 0 230 72" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#a8b8c3"/>
+      <stop offset="100%" stop-color="#607d8b"/>
+    </linearGradient>
+    <linearGradient id="rg" x1="100%" y1="0%" x2="40%" y2="100%">
+      <stop offset="0%" stop-color="#90a4ae"/>
+      <stop offset="100%" stop-color="#4f6875"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LEFT HEMISPHERE — bumpy organic outline -->
+  <path d="
+    M 66,58
+    C 58,63 44,65 30,60
+    C 16,55  5,44  4,32
+    C  3,20 10,10 20, 7
+    C 24, 3 30, 5 32,10
+    C 35, 4 42, 2 48, 6
+    C 51, 1 59, 1 62, 7
+    C 65, 2 72, 6 71,15
+    C 76,20 74,32 70,38
+    C 74,45 71,55 66,58 Z
+  " fill="url(#lg)" stroke="#4a6470" stroke-width="0.8"/>
+
+  <!-- Left sulci (white fold lines) -->
+  <path d="M 20,20 Q 36,13 52,20" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
+  <path d="M 12,35 Q 36,27 56,35" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
+  <path d="M 16,49 Q 36,43 54,49" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 36, 8 Q 44,24 40,44"  stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Interhemispheric fissure -->
+  <rect x="69" y="7" width="4" height="54" fill="#f0f2f5" rx="2"/>
+
+  <!-- RIGHT HEMISPHERE — mirror bumpy outline -->
+  <path d="
+    M 76,58
+    C 84,63 98,65 112,60
+    C 126,55 137,44 138,32
+    C 139,20 132,10 122, 7
+    C 118, 3 112, 5 110,10
+    C 107, 4 100, 2  94, 6
+    C  91, 1  83, 1  80, 7
+    C  77, 2  70, 6  71,15
+    C  66,20  68,32  72,38
+    C  68,45  71,55  76,58 Z
+  " fill="url(#rg)" stroke="#3d5560" stroke-width="0.8"/>
+
+  <!-- Right sulci -->
+  <path d="M 122,20 Q 106,13  90,20" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
+  <path d="M 130,35 Q 106,27  86,35" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
+  <path d="M 126,49 Q 106,43  88,49" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 106, 8 Q  98,24 102,44" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/>
+
   <!-- Wordmark -->
-  <text x="152" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="22"
-        font-weight="800" fill="#2c3e50" letter-spacing="1" text-anchor="middle">GRAY</text>
-  <text x="152" y="46" font-family="'Segoe UI',Arial,sans-serif" font-size="13"
-        font-weight="400" fill="#78909c" letter-spacing="5" text-anchor="middle">MATTERS</text>
+  <text x="183" y="31" font-family="'Segoe UI',Arial,sans-serif"
+        font-size="24" font-weight="800" fill="#2c3e50" letter-spacing="2"
+        text-anchor="middle">GRAY</text>
+  <line x1="155" y1="38" x2="211" y2="38" stroke="#90a4ae" stroke-width="1.2"/>
+  <text x="183" y="54" font-family="'Segoe UI',Arial,sans-serif"
+        font-size="13" font-weight="700" fill="#37474f" letter-spacing="4"
+        text-anchor="middle">MATTERS</text>
 </svg>
 """
 
