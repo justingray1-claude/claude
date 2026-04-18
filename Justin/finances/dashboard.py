@@ -25,70 +25,13 @@ st.set_page_config(
 )
 
 LOGO_SVG = """
-<svg width="230" height="72" viewBox="0 0 230 72" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background so logo is readable in both light and dark mode -->
-  <rect width="230" height="72" rx="10" fill="#1e2530"/>
-  <defs>
-    <linearGradient id="lg" x1="0%" y1="0%" x2="60%" y2="100%">
-      <stop offset="0%" stop-color="#a8b8c3"/>
-      <stop offset="100%" stop-color="#607d8b"/>
-    </linearGradient>
-    <linearGradient id="rg" x1="100%" y1="0%" x2="40%" y2="100%">
-      <stop offset="0%" stop-color="#90a4ae"/>
-      <stop offset="100%" stop-color="#4f6875"/>
-    </linearGradient>
-  </defs>
-
-  <!-- LEFT HEMISPHERE — bumpy organic outline -->
-  <path d="
-    M 66,58
-    C 58,63 44,65 30,60
-    C 16,55  5,44  4,32
-    C  3,20 10,10 20, 7
-    C 24, 3 30, 5 32,10
-    C 35, 4 42, 2 48, 6
-    C 51, 1 59, 1 62, 7
-    C 65, 2 72, 6 71,15
-    C 76,20 74,32 70,38
-    C 74,45 71,55 66,58 Z
-  " fill="url(#lg)" stroke="#4a6470" stroke-width="0.8"/>
-
-  <!-- Left sulci (white fold lines) -->
-  <path d="M 20,20 Q 36,13 52,20" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
-  <path d="M 12,35 Q 36,27 56,35" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
-  <path d="M 16,49 Q 36,43 54,49" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-  <path d="M 36, 8 Q 44,24 40,44"  stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/>
-
-  <!-- Interhemispheric fissure -->
-  <rect x="69" y="7" width="4" height="54" fill="#f0f2f5" rx="2"/>
-
-  <!-- RIGHT HEMISPHERE — mirror bumpy outline -->
-  <path d="
-    M 76,58
-    C 84,63 98,65 112,60
-    C 126,55 137,44 138,32
-    C 139,20 132,10 122, 7
-    C 118, 3 112, 5 110,10
-    C 107, 4 100, 2  94, 6
-    C  91, 1  83, 1  80, 7
-    C  77, 2  70, 6  71,15
-    C  66,20  68,32  72,38
-    C  68,45  71,55  76,58 Z
-  " fill="url(#rg)" stroke="#3d5560" stroke-width="0.8"/>
-
-  <!-- Right sulci -->
-  <path d="M 122,20 Q 106,13  90,20" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
-  <path d="M 130,35 Q 106,27  86,35" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.75"/>
-  <path d="M 126,49 Q 106,43  88,49" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-  <path d="M 106, 8 Q  98,24 102,44" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/>
-
-  <!-- Wordmark -->
-  <text x="183" y="31" font-family="'Segoe UI',Arial,sans-serif"
-        font-size="24" font-weight="800" fill="#ecf0f1" letter-spacing="2"
+<svg width="200" height="64" viewBox="0 0 200 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="64" rx="10" fill="#1e2530"/>
+  <text x="100" y="36" font-family="'Segoe UI',Arial,sans-serif"
+        font-size="28" font-weight="800" fill="#ecf0f1" letter-spacing="3"
         text-anchor="middle">GRAY</text>
-  <line x1="155" y1="38" x2="211" y2="38" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="183" y="54" font-family="'Segoe UI',Arial,sans-serif"
-        font-size="13" font-weight="700" fill="#90a4ae" letter-spacing="4"
+  <text x="100" y="54" font-family="'Segoe UI',Arial,sans-serif"
+        font-size="13" font-weight="700" fill="#90a4ae" letter-spacing="6"
         text-anchor="middle">MATTERS</text>
 </svg>
 """
