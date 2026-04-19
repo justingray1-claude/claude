@@ -5,9 +5,11 @@ Run with:  streamlit run finances/dashboard.py
 """
 
 import base64
+import os
 import sys
 from pathlib import Path
 
+import anthropic
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
@@ -131,6 +133,81 @@ wr = annual_spend / total_assets * 100
 years = target_age - current_age
 fv = results["final_values"]
 fa = results["failure_ages"]
+
+# ── AI Commentary ─────────────────────────────────────────────────────────────
+def _commentary_prompt(invest_portfolio, cash_buffer, annual_spend, current_age,
+                        target_age, mean_return, std_return, success_rate,
+                        median_val, p10_val, wr):
+    years = target_age - current_age
+    total = invest_portfolio + cash_buffer
+    health = "strong" if success_rate >= 90 else "adequate" if success_rate >= 80 else "at risk"
+    return f"""You are a senior financial advisor giving a private briefing to a high-net-worth client.
+
+Client profile:
+- Age {current_age}, targeting retirement now
+- Invested assets: ${invest_portfolio:,.0f} (401k + brokerage)
+- Cash buffer (HYSA): ${cash_buffer:,.0f}
+- Total: ${total:,.0f}
+- Annual spending: ${annual_spend:,.0f} ({wr:.1f}% withdrawal rate)
+- Horizon: {years} years to age {target_age}
+- Assumed real return: {mean_return:.1f}% avg, {std_return:.1f}% volatility
+
+Monte Carlo results ({success_rate:.1f}% success rate — classified as {health}):
+- Median portfolio at age {target_age}: ${median_val:,.0f}
+- 10th percentile at age {target_age}: ${p10_val:,.0f}
+
+Write a crisp executive briefing. Use these exact section headers. No fluff, no hedging.
+
+**Situation**
+2–3 direct sentences. Assess the overall picture clearly.
+
+**Key Risks**
+- [3 specific bullet points — threats most relevant to these exact numbers]
+
+**Recommendations**
+- [3–4 specific, actionable bullets — include dollar figures where useful]"""
+
+
+def _stream_commentary(prompt):
+    client = anthropic.Anthropic()
+    with client.messages.stream(
+        model="claude-opus-4-6",
+        max_tokens=600,
+        messages=[{"role": "user", "content": prompt}],
+    ) as stream:
+        for text in stream.text_stream:
+            yield text
+
+
+_commentary_cache_key = (
+    invest_portfolio, cash_buffer, annual_spend, current_age,
+    target_age, mean_return, std_return,
+)
+
+_median_val = float(np.median(fv)) if len(fv) else 0
+_p10_val = float(np.percentile(fv, 10)) if len(fv) else 0
+_prompt = _commentary_prompt(
+    invest_portfolio, cash_buffer, annual_spend, current_age,
+    target_age, mean_return, std_return, sr, _median_val, _p10_val, wr,
+)
+
+st.subheader("Executive Summary")
+if os.environ.get("ANTHROPIC_API_KEY"):
+    if (
+        "commentary_key" not in st.session_state
+        or st.session_state.commentary_key != _commentary_cache_key
+    ):
+        with st.container(border=True):
+            commentary = st.write_stream(_stream_commentary(_prompt))
+        st.session_state.commentary_key = _commentary_cache_key
+        st.session_state.commentary_text = commentary
+    else:
+        with st.container(border=True):
+            st.markdown(st.session_state.commentary_text)
+else:
+    st.info("Set `ANTHROPIC_API_KEY` in your environment to enable AI commentary.")
+
+st.divider()
 
 # ── Success rate — big hero number ───────────────────────────────────────────
 color = "#2ecc71" if sr >= 90 else "#f39c12" if sr >= 80 else "#e74c3c"
