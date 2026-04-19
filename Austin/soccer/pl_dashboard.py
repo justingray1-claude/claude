@@ -1,6 +1,7 @@
 """
-Premier League Player Stats Dashboard
-======================================
+Football Player Stats Dashboard
+=================================
+Supports Premier League and La Liga.
 Run with:  streamlit run soccer/pl_dashboard.py
 """
 
@@ -14,75 +15,89 @@ import plotly.graph_objects as go
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent))
-from pl_data import STAT_TYPES, fetch_player_stats, get_seasons
+from league_data import LEAGUES, STAT_TYPES, fetch_player_stats, get_seasons
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="PL Player Stats",
+    page_title="Football Player Stats",
     page_icon="⚽",
     layout="wide",
 )
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 POS_MAP = {
-    "All":        None,
-    "Forwards":   "F",
-    "Midfielders":"M",
-    "Defenders":  "D",
-    "Goalkeepers":"G",
+    "All":         None,
+    "Forwards":    "F",
+    "Midfielders": "M",
+    "Defenders":   "D",
+    "Goalkeepers": "G",
 }
 
 LEADERBOARD_COLS = {
-    "name":             "Player",
-    "team":             "Team",
-    "position":         "Position",
-    "appearances":      "Apps",
-    "mins_played":      "Mins",
-    "goals":            "Goals",
-    "goal_assist":      "Assists",
-    "goal_involvements":"G+A",
-    "total_scoring_att":"Shots",
-    "shot_conversion":  "Conv %",
+    "name":              "Player",
+    "team":              "Team",
+    "position":          "Position",
+    "appearances":       "Apps",
+    "mins_played":       "Mins",
+    "goals":             "Goals",
+    "goal_assist":       "Assists",
+    "goal_involvements": "G+A",
+    "total_scoring_att": "Shots",
+    "shot_conversion":   "Conv %",
     "big_chance_created":"Big Chances",
-    "total_pass":       "Passes",
-    "total_tackle":     "Tackles",
-    "tackle_success":   "Tackle %",
-    "interception":     "Interceptions",
-    "saves":            "Saves",
-    "yellow_card":      "YC",
-    "red_card":         "RC",
+    "total_pass":        "Passes",
+    "total_tackle":      "Tackles",
+    "tackle_success":    "Tackle %",
+    "interception":      "Interceptions",
+    "saves":             "Saves",
+    "yellow_card":       "YC",
+    "red_card":          "RC",
 }
 
+LEAGUE_NAMES = list(LEAGUES.keys())
+
 # ── Data loading ──────────────────────────────────────────────────────────────
-@st.cache_data(ttl=1800, show_spinner="Fetching Premier League data…")
-def load_data(season_id: int) -> pd.DataFrame:
-    return fetch_player_stats(season_id)
+@st.cache_data(ttl=1800, show_spinner="Fetching stats…")
+def load_data(season_id: int, league: str) -> pd.DataFrame:
+    return fetch_player_stats(season_id, league)
 
 
-@st.cache_data(ttl=86400, show_spinner=False)
-def load_seasons() -> dict:
-    return get_seasons()
+def load_seasons(league: str) -> dict:
+    return get_seasons(league)
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## ⚽ PL Player Stats")
+    st.markdown("## ⚽ Football Stats")
     st.divider()
 
-    seasons = load_seasons()
-    season_label = st.selectbox("Season", list(seasons.keys()), index=1)
+    # League selector
+    league = st.radio(
+        "League",
+        LEAGUE_NAMES,
+        format_func=lambda l: f"{LEAGUES[l]['emoji']} {l}",
+        horizontal=True,
+    )
+
+    st.divider()
+
+    seasons = {label.split()[-1]: sid for label, sid in load_seasons(league).items()}
+    if not seasons:
+        st.error(f"Could not load seasons for {league}.")
+        st.stop()
+    season_label = st.selectbox("Season", list(seasons.keys()), index=1 if len(seasons) > 1 else 0)
     season_id = seasons[season_label]
 
     st.divider()
     pos_choice = st.radio("Position", list(POS_MAP.keys()), horizontal=True)
     min_mins = st.slider("Min. minutes played", 0, 3000, 200, step=50)
 
-    df_raw = load_data(season_id)
+    df_raw = load_data(season_id, league)
 
     teams = sorted(df_raw["team"].dropna().unique().tolist())
     selected_teams = st.multiselect("Teams", teams, default=[])
 
     st.divider()
-    st.caption("Data: Premier League API · No API key required")
+    st.caption(f"Data: {league} API · No API key required")
 
 # ── Filter ────────────────────────────────────────────────────────────────────
 df = df_raw.copy()
@@ -93,7 +108,8 @@ if selected_teams:
 df = df[df["mins_played"] >= min_mins]
 
 # ── Header ────────────────────────────────────────────────────────────────────
-st.title(f"Premier League Player Stats — {season_label}")
+league_emoji = LEAGUES[league]["emoji"]
+st.title(f"{league_emoji} {league} Player Stats — {season_label}")
 st.caption(f"{len(df)} players shown · {int(df['goals'].sum())} goals · {int(df['goal_assist'].sum())} assists")
 
 st.divider()
@@ -126,12 +142,12 @@ with tab_board:
         use_container_width=True,
         height=600,
         column_config={
-            "Player":       st.column_config.TextColumn(width="medium"),
-            "Team":         st.column_config.TextColumn(width="small"),
-            "Conv %":       st.column_config.NumberColumn(format="%.1f%%"),
-            "Tackle %":     st.column_config.NumberColumn(format="%.1f%%"),
-            "Goals":        st.column_config.NumberColumn(),
-            "Assists":      st.column_config.NumberColumn(),
+            "Player":   st.column_config.TextColumn(width="medium"),
+            "Team":     st.column_config.TextColumn(width="small"),
+            "Conv %":   st.column_config.NumberColumn(format="%.1f%%"),
+            "Tackle %": st.column_config.NumberColumn(format="%.1f%%"),
+            "Goals":    st.column_config.NumberColumn(),
+            "Assists":  st.column_config.NumberColumn(),
         },
     )
 
@@ -167,12 +183,12 @@ with tab_player:
 
     # ── Hero stats ────────────────────────────────────────────────────────────
     c1, c2, c3, c4, c5, c6 = st.columns(6)
-    c1.metric("Goals",       int(player["goals"]))
-    c2.metric("Assists",     int(player["goal_assist"]))
-    c3.metric("G+A",         int(player["goal_involvements"]))
-    c4.metric("Apps",        int(player["appearances"]))
-    c5.metric("Minutes",     f"{int(player['mins_played']):,}")
-    c6.metric("Shots",       int(player["total_scoring_att"]))
+    c1.metric("Goals",   int(player["goals"]))
+    c2.metric("Assists", int(player["goal_assist"]))
+    c3.metric("G+A",     int(player["goal_involvements"]))
+    c4.metric("Apps",    int(player["appearances"]))
+    c5.metric("Minutes", f"{int(player['mins_played']):,}")
+    c6.metric("Shots",   int(player["total_scoring_att"]))
 
     st.caption(
         f"**{player['team']}** · {player['position']} · "
@@ -186,14 +202,13 @@ with tab_player:
     with col_l:
         st.subheader("Key Stats vs League")
         stats_to_show = [
-            ("goals",           "Goals"),
-            ("goal_assist",     "Assists"),
+            ("goals",            "Goals"),
+            ("goal_assist",      "Assists"),
             ("total_scoring_att","Shots"),
             ("big_chance_created","Big Chances"),
-            ("total_tackle",    "Tackles"),
-            ("interception",    "Interceptions"),
+            ("total_tackle",     "Tackles"),
+            ("interception",     "Interceptions"),
         ]
-        # Filter to relevant position
         league_df = df_raw[df_raw["mins_played"] >= 500]
 
         bars = []
@@ -233,7 +248,6 @@ with tab_player:
 
     with col_r:
         st.subheader("Per-90 Min Profile")
-        # Radar chart with per-90 stats
         p90_metrics = {
             "Goals p90":        "goals_p90",
             "Assists p90":      "assists_p90",
@@ -242,19 +256,17 @@ with tab_player:
             "Passes p90 /100":  "passes_p90",
         }
 
-        # Normalise each metric 0-1 vs full squad
         radar_vals = []
         radar_labels = []
         for label, col in p90_metrics.items():
             col_max = df_raw[col].quantile(0.95)
             val = min(float(player[col]) / max(col_max, 0.01), 1.0)
-            # Special: passes divide by 100 for display
             if "100" in label:
                 val = min(float(player[col]) / 100 / max(col_max / 100, 0.01), 1.0)
             radar_vals.append(round(val, 3))
             radar_labels.append(label.replace(" /100", ""))
 
-        radar_vals_closed = radar_vals + [radar_vals[0]]
+        radar_vals_closed   = radar_vals + [radar_vals[0]]
         radar_labels_closed = radar_labels + [radar_labels[0]]
 
         fig_radar = go.Figure(go.Scatterpolar(
@@ -273,13 +285,13 @@ with tab_player:
         )
         st.plotly_chart(fig_radar, use_container_width=True)
 
-    # ── Row 2: Shot conversion + discipline ──────────────────────────────────
+    # ── Row 2: Shooting + discipline + defensive ──────────────────────────────
     col_a, col_b, col_c = st.columns(3)
 
     with col_a:
         st.subheader("Shooting")
-        goals = int(player["goals"])
-        shots = int(player["total_scoring_att"])
+        goals  = int(player["goals"])
+        shots  = int(player["total_scoring_att"])
         missed = shots - goals
         fig_donut = go.Figure(go.Pie(
             values=[goals, missed],
@@ -325,30 +337,30 @@ with tab_player:
     # ── Full stat table ───────────────────────────────────────────────────────
     with st.expander("Full stat breakdown"):
         stat_rows = [
-            {"Category": "Attacking",   "Stat": "Goals",            "Value": int(player["goals"])},
-            {"Category": "Attacking",   "Stat": "Assists",           "Value": int(player["goal_assist"])},
-            {"Category": "Attacking",   "Stat": "Goal Involvements", "Value": int(player["goal_involvements"])},
-            {"Category": "Attacking",   "Stat": "Shots",             "Value": int(player["total_scoring_att"])},
-            {"Category": "Attacking",   "Stat": "Shot Conversion",   "Value": f"{player['shot_conversion']}%"},
-            {"Category": "Attacking",   "Stat": "Big Chances Missed","Value": int(player["big_chance_missed"])},
-            {"Category": "Attacking",   "Stat": "Offsides",          "Value": int(player["total_offside"])},
-            {"Category": "Creativity",  "Stat": "Big Chances Created","Value": int(player["big_chance_created"])},
-            {"Category": "Creativity",  "Stat": "Through Balls",     "Value": int(player["total_through_ball"])},
-            {"Category": "Creativity",  "Stat": "Crosses",           "Value": int(player["total_cross"])},
-            {"Category": "Creativity",  "Stat": "Passes",            "Value": int(player["total_pass"])},
-            {"Category": "Defending",   "Stat": "Tackles",           "Value": int(player["total_tackle"])},
-            {"Category": "Defending",   "Stat": "Tackles Won",       "Value": int(player["won_tackle"])},
-            {"Category": "Defending",   "Stat": "Tackle Success",    "Value": f"{player['tackle_success']}%"},
-            {"Category": "Defending",   "Stat": "Interceptions",     "Value": int(player["interception"])},
-            {"Category": "Defending",   "Stat": "Clearances",        "Value": int(player["total_clearance"])},
-            {"Category": "Defending",   "Stat": "Aerials Won",       "Value": int(player["total_aerial_won"])},
-            {"Category": "Goalkeeping", "Stat": "Clean Sheets",      "Value": int(player["clean_sheet"])},
-            {"Category": "Goalkeeping", "Stat": "Saves",             "Value": int(player["saves"])},
-            {"Category": "Discipline",  "Stat": "Yellow Cards",      "Value": int(player["yellow_card"])},
-            {"Category": "Discipline",  "Stat": "Red Cards",         "Value": int(player["red_card"])},
-            {"Category": "Discipline",  "Stat": "Fouls",             "Value": int(player["fouls"])},
-            {"Category": "Playing Time","Stat": "Appearances",       "Value": int(player["appearances"])},
-            {"Category": "Playing Time","Stat": "Minutes Played",    "Value": f"{int(player['mins_played']):,}"},
+            {"Category": "Attacking",    "Stat": "Goals",             "Value": int(player["goals"])},
+            {"Category": "Attacking",    "Stat": "Assists",           "Value": int(player["goal_assist"])},
+            {"Category": "Attacking",    "Stat": "Goal Involvements", "Value": int(player["goal_involvements"])},
+            {"Category": "Attacking",    "Stat": "Shots",             "Value": int(player["total_scoring_att"])},
+            {"Category": "Attacking",    "Stat": "Shot Conversion",   "Value": f"{player['shot_conversion']}%"},
+            {"Category": "Attacking",    "Stat": "Big Chances Missed","Value": int(player["big_chance_missed"])},
+            {"Category": "Attacking",    "Stat": "Offsides",          "Value": int(player["total_offside"])},
+            {"Category": "Creativity",   "Stat": "Big Chances Created","Value": int(player["big_chance_created"])},
+            {"Category": "Creativity",   "Stat": "Through Balls",     "Value": int(player["total_through_ball"])},
+            {"Category": "Creativity",   "Stat": "Crosses",           "Value": int(player["total_cross"])},
+            {"Category": "Creativity",   "Stat": "Passes",            "Value": int(player["total_pass"])},
+            {"Category": "Defending",    "Stat": "Tackles",           "Value": int(player["total_tackle"])},
+            {"Category": "Defending",    "Stat": "Tackles Won",       "Value": int(player["won_tackle"])},
+            {"Category": "Defending",    "Stat": "Tackle Success",    "Value": f"{player['tackle_success']}%"},
+            {"Category": "Defending",    "Stat": "Interceptions",     "Value": int(player["interception"])},
+            {"Category": "Defending",    "Stat": "Clearances",        "Value": int(player["total_clearance"])},
+            {"Category": "Defending",    "Stat": "Aerials Won",       "Value": int(player["total_aerial_won"])},
+            {"Category": "Goalkeeping",  "Stat": "Clean Sheets",      "Value": int(player["clean_sheet"])},
+            {"Category": "Goalkeeping",  "Stat": "Saves",             "Value": int(player["saves"])},
+            {"Category": "Discipline",   "Stat": "Yellow Cards",      "Value": int(player["yellow_card"])},
+            {"Category": "Discipline",   "Stat": "Red Cards",         "Value": int(player["red_card"])},
+            {"Category": "Discipline",   "Stat": "Fouls",             "Value": int(player["fouls"])},
+            {"Category": "Playing Time", "Stat": "Appearances",       "Value": int(player["appearances"])},
+            {"Category": "Playing Time", "Stat": "Minutes Played",    "Value": f"{int(player['mins_played']):,}"},
         ]
         st.dataframe(pd.DataFrame(stat_rows), use_container_width=True, hide_index=True)
 
@@ -387,7 +399,6 @@ with tab_compare:
         ("mins_played",       "Minutes"),
     ]
 
-    # Side-by-side metric cards
     ca, cb = st.columns(2)
     ca.markdown(f"### {p1_name}\n*{p1['team']} · {p1['position']}*")
     cb.markdown(f"### {p2_name}\n*{p2['team']} · {p2['position']}*")
@@ -406,7 +417,7 @@ with tab_compare:
 
     # Radar comparison
     st.subheader("Radar Comparison")
-    radar_cats = ["goals_p90", "assists_p90", "shots_p90", "tackles_p90", "passes_p90"]
+    radar_cats   = ["goals_p90", "assists_p90", "shots_p90", "tackles_p90", "passes_p90"]
     radar_labels = ["Goals p90", "Assists p90", "Shots p90", "Tackles p90", "Passes p90"]
 
     def normalise(val, col):
