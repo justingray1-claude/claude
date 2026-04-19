@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natalia's Alterations & Tailoring | Eugene, OR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #faf8f4;
+      --warm-white: #ffffff;
+      --gold: #c09a5e;
+      --gold-light: #d9bb88;
+      --gold-pale: #f5eddc;
+      --dark: #1e1812;
+      --dark-mid: #3a2e1e;
+      --text: #2e2416;
+      --muted: #7a6a50;
+      --border: #e5d9c5;
+      --shadow: rgba(30,24,18,0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, .section-title, .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 1px 12px var(--shadow);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: white !important;
+      padding: 9px 22px !important;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      color: white !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      z-index: 199;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, #1e1812 0%, #3a2e1e 60%, #1e1812 100%);
+      color: white;
+      padding: 120px 48px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(192,154,94,0.18) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c09a5e' fill-opacity='0.04'%3E%3Cpath d='M40 0 L41 39 L80 40 L41 41 L40 80 L39 41 L0 40 L39 39Z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold-light);
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: white;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 44px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      padding: 15px 36px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+      border-radius: 2px;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+      padding: 15px 36px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+      border-radius: 2px;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--gold);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-item {
+      padding: 24px 20px;
+      text-align: center;
+      color: white;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* ─── SECTIONS SHARED ─── */
+    section {
+      padding: 96px 48px;
+    }
+
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      margin-bottom: 52px;
+      font-weight: 300;
+    }
+
+    .gold-line {
+      width: 52px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      margin: 18px 0 44px;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section {
+      background: white;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: white;
+      padding: 36px 32px;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .service-card:hover {
+      background: var(--gold-pale);
+    }
+
+    .service-card:hover .service-icon-wrap {
+      background: var(--gold);
+      color: white;
+    }
+
+    .service-icon-wrap {
+      width: 48px;
+      height: 48px;
+      background: var(--gold-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 2px;
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── SEASONAL BANNER ─── */
+    .seasonal-banner {
+      background: var(--dark);
+      color: white;
+      padding: 52px 48px;
+    }
+
+    .seasonal-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .seasonal-icon {
+      font-size: 3rem;
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+
+    .seasonal-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .seasonal-text p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 580px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-visual-box {
+      background: linear-gradient(145deg, var(--dark-mid), var(--dark));
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      color: rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--gold);
+      color: white;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      box-shadow: 0 4px 20px rgba(192,154,94,0.4);
+    }
+
+    .about-badge strong {
+      font-size: 1.8rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .about-badge span {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      font-family: 'Inter', sans-serif;
+      margin-top: 2px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 0.97rem;
+      font-weight: 300;
+    }
+
+    .about-highlights {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      background: white;
+      border-left: 3px solid var(--gold);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* ─── REVIEWS ─── */
+    .reviews-section {
+      background: white;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: 8px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      letter-spacing: 3px;
+    }
+
+    .review-card blockquote {
+      color: var(--text);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      border: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reviewer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+
+    .review-highlight {
+      background: var(--dark);
+      border-color: var(--gold);
+    }
+
+    /* ─── CONTACT FORM ─── */
+    .contact-section {
+      background: var(--cream);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+
+    .contact-info-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .contact-item-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--gold-pale);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .contact-item-text {
+      font-size: 0.93rem;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .contact-item-text a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-item-text a:hover {
+      color: var(--gold);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table td {
+      padding: 11px 0;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .hours-table .day-closed td:last-child {
+      color: #b94040;
+    }
+
+    /* FORM */
+    .form-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .form-col p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      border-radius: 2px;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(192,154,94,0.12);
+    }
+
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c09a5e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 15px 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border-radius: 2px;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .form-submit:hover {
+      background: var(--dark);
+      transform: translateY(-1px);
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 12px;
+      text-align: center;
+      font-weight: 300;
+    }
+
+    /* ─── MAP ─── */
+    .map-section {
+      padding: 0;
+      background: var(--border);
+    }
+
+    .map-section iframe {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border: 0;
+      filter: grayscale(15%) contrast(1.05);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.45);
+      padding: 36px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.82rem;
+    }
+
+    .footer-left {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-badge {
+        right: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 80px 24px 70px;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      section {
+        padding: 64px 24px;
+      }
+
+      .stats-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .seasonal-inner {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <div class="nav-logo">
+      Natalia's Alterations
+      <span>5th Street Public Market &bull; Eugene, OR</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#reviews" onclick="toggleMenu()">Reviews</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">Contact &amp; Book</a></li>
+    </ul>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Eugene, Oregon</p>
+      <h1>Expert Alterations &amp;<br><em>Tailoring You Can Trust</em></h1>
+      <p class="hero-sub">From wedding gowns to everyday essentials, Natalia brings precision craftsmanship and personal care to every garment — right in the heart of the 5th Street Public Market.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Book an Appointment</a>
+        <a href="#services" class="btn-outline">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS STRIP ─── -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-number">4.7★</span>
+      <span class="stat-label">Average Rating</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">99+</span>
+      <span class="stat-label">Verified Reviews</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">5★</span>
+      <span class="stat-label">on WeddingWire</span>
+    </div>
+  </div>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services" class="services-section">
+    <div class="section-inner">
+      <p class="section-eyebrow">What We Offer</p>
+      <h2 class="section-title">Tailoring &amp; Alteration Services</h2>
+      <div class="gold-line"></div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon-wrap">👗</div>
+          <h3>Wedding &amp; Bridal</h3>
+          <p>Bridal gown alterations, bustle additions, and formal dress fitting. Precision work for your most important day.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap">🎩</div>
+          <h3>Formal Wear</h3>
+          <p>Prom dresses, suits, and event attire tailored to fit you perfectly — not just off the rack.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap">✂️</div>
+          <h3>Everyday Alterations</h3>
+          <p>Dresses, skirts, blouses, slacks, jackets, and shirts taken in, let out, or reshaped to fit your body.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap">👖</div>
+          <h3>Hemming &amp; Repairs</h3>
+          <p>Jean hemming, zipper replacements, seam repairs, button replacements — done right the first time.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap">🧥</div>
+          <h3>Suits &amp; Coats</h3>
+          <p>Men's and women's suit tailoring, coat alterations, and outerwear repairs for sharp, structured fits.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap">🪡</div>
+          <h3>Specialty Projects</h3>
+          <p>Leather patches, curtain shortening, and unique alteration requests — if it's fabric, Natalia can work with it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SEASONAL BANNER ─── -->
+  <div class="seasonal-banner">
+    <div class="seasonal-inner">
+      <div class="seasonal-icon">🌸</div>
+      <div class="seasonal-text">
+        <h3>Seasonal Scheduling Notice</h3>
+        <p>From <strong style="color:var(--gold-light)">March through September</strong>, the shop focuses almost exclusively on wedding and formal wear — and books at least one week out. For everyday alterations, <strong style="color:var(--gold-light)">October through February</strong> is the best time to visit. All visits are by appointment only.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about" class="about-section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-visual-box">✂</div>
+          <div class="about-badge">
+            <strong>4.7</strong>
+            <span>Stars</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-eyebrow">About Natalia</p>
+          <h2 class="section-title">Craftsmanship at the Heart of Eugene</h2>
+          <div class="gold-line"></div>
+          <p>Natalia has built a loyal following in Eugene through word-of-mouth, repeat customers, and a reputation for getting it right. Located inside the historic 5th Street Public Market, her shop is a trusted destination for anyone who needs their clothes to fit the way they should.</p>
+          <p>Whether you're preparing for a wedding, a job interview, or just want your favorite jeans to fit perfectly, Natalia brings the same care and precision to every project — big or small.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">Specializing in wedding gowns and formal wear</div>
+            <div class="highlight-item">Located inside 5th Street Public Market — a Eugene landmark</div>
+            <div class="highlight-item">99+ verified five-star reviews across Google, Yelp &amp; WeddingWire</div>
+            <div class="highlight-item">Friendly, professional, and detail-oriented every time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── REVIEWS ─── -->
+  <section id="reviews" class="reviews-section">
+    <div class="section-inner">
+      <p class="section-eyebrow">What Customers Say</p>
+      <h2 class="section-title">Real Reviews</h2>
+      <div class="gold-line"></div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Natalia was amazing... she was professional and knew exactly what she was doing."</blockquote>
+          <p class="reviewer">— Verified Customer, Google</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"This place did an amazing job on my dress. It was done in less than a week for a very affordable price."</blockquote>
+          <p class="reviewer">— Verified Customer, Yelp</p>
+        </div>
+        <div class="review-card review-highlight">
+          <div class="stars" style="color:var(--gold-light)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote style="color:rgba(255,255,255,0.85); font-family:'Cormorant Garamond',serif;">"She is super efficient, knowledgeable, and the price is really reasonable. She does it all!"</blockquote>
+          <p class="reviewer" style="color:var(--gold-light)">— Lori, WeddingWire</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Natalia did a great job on my wedding gown... She was fast, inexpensive, and very nice."</blockquote>
+          <p class="reviewer">— WeddingWire Customer</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Natalia is friendly, understanding, and heartfelt hardworking."</blockquote>
+          <p class="reviewer">— Verified Customer, Nextdoor</p>
+        </div>
+        <div class="review-card" style="background: var(--gold-pale); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+          <div class="stars" style="font-size:1.1rem; letter-spacing:4px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:600; color:var(--gold); line-height:1; margin:8px 0 4px;">4.7</p>
+          <p style="font-size:0.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.12em; font-weight:600;">Average Rating</p>
+          <p style="font-size:0.82rem; color:var(--muted); margin-top:8px; font-weight:300;">Across Google, Yelp,<br>WeddingWire &amp; Nextdoor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT + FORM ─── -->
+  <section id="contact" class="contact-section">
+    <div class="section-inner">
+      <p class="section-eyebrow">Get in Touch</p>
+      <h2 class="section-title">Contact &amp; Book an Appointment</h2>
+      <div class="gold-line"></div>
+      <div class="contact-layout">
+
+        <!-- INFO + HOURS -->
+        <div class="contact-info-col">
+          <h3>Visit Us</h3>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Address</strong>
+              207 E 5th Ave, Suite 120<br>Eugene, OR 97401<br>
+              <span style="font-size:0.82rem; color:var(--muted);">Inside the 5th Street Public Market</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <strong>Phone</strong>
+              <a href="tel:+15415057418">(541) 505-7418</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <a href="mailto:ns5street@gmail.com">ns5street@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📅</div>
+            <div class="contact-item-text">
+              <strong>Appointments</strong>
+              By appointment only — same-day service not available. Please contact us in advance to schedule.
+            </div>
+          </div>
+
+          <table class="hours-table">
+            <tr><td style="font-weight:500">Tuesday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td style="font-weight:500">Wednesday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td style="font-weight:500">Thursday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td style="font-weight:500">Friday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td style="font-weight:500">Saturday</td><td>10:00 AM – 4:00 PM</td></tr>
+            <tr class="day-closed"><td style="font-weight:500">Sunday</td><td>Closed</td></tr>
+            <tr class="day-closed"><td style="font-weight:500">Monday</td><td>Closed</td></tr>
+          </table>
+        </div>
+
+        <!-- FORM -->
+        <div class="form-col">
+          <h3>Send a Message</h3>
+          <p>Fill out the form below and Natalia will get back to you to confirm your appointment.</p>
+          <form action="mailto:ns5street@gmail.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="First Name" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="Last Name" placeholder="Doe" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" placeholder="you@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="Phone" placeholder="(541) 000-0000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="Service">
+                <option value="">Select a service...</option>
+                <option>Wedding / Bridal Gown Alterations</option>
+                <option>Prom / Formal Dress Alterations</option>
+                <option>Suit or Coat Tailoring</option>
+                <option>Everyday Alterations (dress, blouse, slacks, etc.)</option>
+                <option>Hemming (jeans, pants, skirts)</option>
+                <option>Repairs (zipper, seam, buttons)</option>
+                <option>Specialty Project</option>
+                <option>Not Sure / Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="Message" placeholder="Describe your garment and what alterations you need..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message</button>
+            <p class="form-note">Or call us directly at <a href="tel:+15415057418" style="color:var(--gold)">(541) 505-7418</a></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAP ─── -->
+  <div class="map-section">
+    <iframe
+      src="https://maps.google.com/maps?q=207+E+5th+Ave+Eugene+OR+97401&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Natalia's Alterations Location — 5th Street Public Market, Eugene OR">
+    </iframe>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-left">Natalia's Alterations &amp; Tailoring &mdash; Eugene, Oregon</div>
+    <div class="footer-links">
+      <a href="tel:+15415057418">(541) 505-7418</a>
+      <a href="mailto:ns5street@gmail.com">ns5street@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const nav = document.querySelector('nav');
+      if (!nav.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>
