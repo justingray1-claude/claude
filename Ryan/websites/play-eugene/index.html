@@ -3,62 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PLAY Eugene | Batting Cages, VR Golf, Arcade & More</title>
-  <meta name="description" content="Eugene's ultimate adult playground. Batting cages, immersive VR golf, dart lanes, arcade, cocktail lounge, beer hall and food. 232 W 5th Ave, Eugene OR." />
-  <meta name="keywords" content="PLAY Eugene, batting cages Eugene Oregon, VR golf Eugene, arcade Eugene, entertainment Eugene Oregon, adult entertainment venue Eugene" />
+  <title>PLAY Eugene | Food, Drinks & Fun for All Ages</title>
+  <meta name="description" content="Eugene's ultimate hangout. Batting cages, VR golf, arcade, dart lanes, cocktail lounge, beer hall and 5 food trucks. 232 W 5th Ave, Eugene OR. (541) 357-5010." />
+  <meta name="keywords" content="PLAY Eugene, batting cages Eugene, VR golf Eugene, arcade Eugene, beer hall Eugene, food trucks Eugene, entertainment venue Eugene Oregon" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "EntertainmentBusiness",
     "name": "PLAY Eugene",
-    "description": "Eugene's ultimate adult playground featuring batting cages, VR golf, dart lanes, arcade, cocktail lounge and beer hall.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "232 West 5th Avenue",
-      "addressLocality": "Eugene",
-      "addressRegion": "OR",
-      "postalCode": "97401",
-      "addressCountry": "US"
-    },
+    "description": "Eugene's ultimate hangout featuring batting cages, VR golf, arcade, dart lanes, cocktail lounge, beer hall and food trucks.",
+    "address": { "@type": "PostalAddress", "streetAddress": "232 West 5th Avenue", "addressLocality": "Eugene", "addressRegion": "OR", "postalCode": "97401", "addressCountry": "US" },
     "telephone": "+15413575010",
-    "openingHours": ["Mo-Th 11:30-22:00", "Fr 11:30-23:00", "Sa 11:30-23:00", "Su 11:30-20:00"]
+    "email": "Reservations@playeugene.com",
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "164" }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black: #0a0a0a;
-      --dark: #111111;
-      --card: #181818;
-      --border: #2a2a2a;
-      --neon: #e8ff00;
-      --neon-dim: rgba(232,255,0,0.12);
-      --neon-glow: 0 0 20px rgba(232,255,0,0.4);
-      --red: #ff3b3b;
       --white: #ffffff;
-      --grey: #888888;
-      --light: #cccccc;
+      --off-white: #f7f6f3;
+      --light: #f0eeea;
+      --border: #e5e2db;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --orange: #ff5c35;
+      --blue: #1a56ff;
+      --green: #00b86b;
+      --purple: #7c3aed;
+      --yellow: #ffd000;
+      --pink: #ff3fa4;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--white);
+      background: var(--white);
+      color: var(--text);
       line-height: 1.6;
     }
 
     /* ─── NAV ─── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: sticky;
+      top: 0;
       z-index: 200;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 48px;
@@ -69,13 +64,15 @@
     }
 
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      letter-spacing: 0.1em;
-      color: var(--neon);
-      text-shadow: var(--neon-glow);
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
       text-decoration: none;
+      letter-spacing: -0.02em;
     }
+
+    .nav-logo span { color: var(--orange); }
 
     .nav-links {
       display: flex;
@@ -85,27 +82,27 @@
     }
 
     .nav-links a {
-      color: var(--light);
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--neon); }
+    .nav-links a:hover { color: var(--text); }
 
-    .nav-btn {
-      background: var(--neon) !important;
-      color: var(--black) !important;
+    .nav-cta {
+      background: var(--orange) !important;
+      color: white !important;
       padding: 9px 22px !important;
-      font-weight: 700 !important;
-      border-radius: 2px;
+      border-radius: 100px;
+      font-weight: 600 !important;
       transition: opacity 0.2s !important;
     }
 
-    .nav-btn:hover { opacity: 0.85 !important; color: var(--black) !important; }
+    .nav-cta:hover { opacity: 0.85 !important; }
 
     .hamburger {
       display: none;
@@ -118,253 +115,259 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--white);
-      transition: all 0.3s;
+      background: var(--text);
     }
 
     .mobile-menu {
       display: none;
       position: fixed;
       top: 64px; left: 0; right: 0;
-      background: var(--dark);
+      background: white;
       border-bottom: 1px solid var(--border);
       padding: 20px 24px;
       z-index: 199;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
     .mobile-menu.open { display: block; }
-
     .mobile-menu ul { list-style: none; }
-
     .mobile-menu a {
       display: block;
       padding: 14px 0;
-      color: var(--light);
+      color: var(--text);
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
       border-bottom: 1px solid var(--border);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
 
     /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
+      padding: 120px 48px 100px;
+      background: var(--white);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 30%, rgba(232,255,0,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 60%, rgba(255,59,59,0.05) 0%, transparent 60%);
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(232,255,0,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232,255,0,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    .hero-content { position: relative; z-index: 1; max-width: 800px; }
 
     .hero-tag {
-      display: inline-block;
-      background: var(--neon-dim);
-      border: 1px solid rgba(232,255,0,0.3);
-      color: var(--neon);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--light);
+      color: var(--muted);
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 8px 20px;
+      padding: 8px 16px;
       border-radius: 100px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
     }
 
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 15vw, 10rem);
-      line-height: 0.9;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      margin-bottom: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 24px;
     }
 
-    .hero h1 span {
-      color: var(--neon);
-      text-shadow: var(--neon-glow);
-    }
+    .hero h1 .word-food { color: var(--orange); }
+    .hero h1 .word-drinks { color: var(--blue); }
+    .hero h1 .word-fun { color: var(--green); }
 
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--grey);
-      max-width: 560px;
-      margin: 24px auto 44px;
+    .hero-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
       font-weight: 300;
       line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 460px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 14px;
-      justify-content: center;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .btn-neon {
-      background: var(--neon);
-      color: var(--black);
-      padding: 16px 40px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: opacity 0.2s, transform 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-neon:hover { opacity: 0.85; transform: translateY(-2px); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--white);
-      padding: 16px 40px;
-      font-size: 0.82rem;
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       text-decoration: none;
-      border-radius: 2px;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--text); }
+
+    .hero-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .hero-card {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 24px;
       border: 1px solid var(--border);
-      transition: border-color 0.2s, color 0.2s;
     }
 
-    .btn-ghost:hover { border-color: var(--neon); color: var(--neon); }
+    .hero-card:first-child { grid-column: span 2; background: var(--orange); color: white; }
 
-    .hero-scroll {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
+    .hero-card-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .hero-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .hero-card p { font-size: 0.8rem; opacity: 0.7; }
+    .hero-card:first-child p { opacity: 0.85; }
+
+    /* ─── PILLS STRIP ─── */
+    .pills-strip {
+      background: var(--text);
+      padding: 20px 48px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--grey);
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.7);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--grey), transparent);
-      animation: scrollPulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
     /* ─── SECTIONS ─── */
     section { padding: 96px 48px; }
-
     .section-inner { max-width: 1100px; margin: 0 auto; }
 
     .section-tag {
+      display: inline-block;
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--neon);
+      color: var(--muted);
       margin-bottom: 14px;
     }
 
     .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 1;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.1;
       margin-bottom: 16px;
     }
 
     .section-desc {
-      color: var(--grey);
+      color: var(--muted);
       font-size: 1rem;
-      max-width: 560px;
-      margin-bottom: 52px;
       font-weight: 300;
+      max-width: 520px;
+      margin-bottom: 52px;
+      line-height: 1.8;
     }
 
     /* ─── ACTIVITIES ─── */
-    #activities { background: var(--dark); }
+    #activities { background: var(--off-white); }
 
     .activities-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 16px;
     }
 
     .activity-card {
-      background: var(--card);
-      padding: 40px 32px;
-      transition: background 0.2s;
+      background: white;
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
       overflow: hidden;
     }
 
-    .activity-card::after {
-      content: '';
+    .activity-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .activity-accent {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--neon);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
+      top: 0; left: 0; right: 0;
+      height: 4px;
     }
 
-    .activity-card:hover { background: #1e1e1e; }
-    .activity-card:hover::after { transform: scaleX(1); }
+    .accent-orange { background: var(--orange); }
+    .accent-blue { background: var(--blue); }
+    .accent-green { background: var(--green); }
+    .accent-purple { background: var(--purple); }
+    .accent-yellow { background: var(--yellow); }
+    .accent-pink { background: var(--pink); }
 
-    .activity-icon {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      display: block;
-    }
+    .activity-icon { font-size: 2rem; margin-bottom: 18px; display: block; }
 
     .activity-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.06em;
-      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
       margin-bottom: 10px;
     }
 
     .activity-card p {
-      color: var(--grey);
-      font-size: 0.9rem;
+      color: var(--muted);
+      font-size: 0.88rem;
       font-weight: 300;
       line-height: 1.7;
     }
@@ -372,115 +375,347 @@
     .activity-badge {
       display: inline-block;
       margin-top: 16px;
-      background: var(--neon-dim);
-      border: 1px solid rgba(232,255,0,0.2);
-      color: var(--neon);
+      background: var(--light);
+      color: var(--muted);
       font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 5px 12px;
       border-radius: 100px;
     }
 
-    /* ─── ZONES ─── */
-    #zones { background: var(--black); }
+    /* ─── FOOD ─── */
+    #food { background: white; }
 
-    .zones-grid {
+    .food-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
-    .zone-card {
-      padding: 48px 40px;
+    .food-card {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 32px 28px;
       border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      transition: transform 0.2s;
     }
 
-    .zone-card.family { background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); }
-    .zone-card.adults { background: linear-gradient(135deg, #0f0f00 0%, #1a1a00 100%); border-color: rgba(232,255,0,0.2); }
+    .food-card:hover { transform: translateY(-2px); }
 
-    .zone-label {
-      font-size: 0.7rem;
+    .food-card:first-child {
+      grid-column: span 2;
+      background: var(--text);
+      color: white;
+    }
+
+    .food-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 16px;
+    }
+
+    .food-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+    }
+
+    .food-card:first-child .food-name { color: white; }
+
+    .food-status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      flex-shrink: 0;
     }
 
-    .zone-card.family .zone-label { color: var(--grey); }
-    .zone-card.adults .zone-label { color: var(--neon); }
+    .status-open { background: rgba(0,184,107,0.12); color: var(--green); }
+    .status-note { background: rgba(255,92,53,0.12); color: var(--orange); }
+    .status-white { background: rgba(255,255,255,0.12); color: white; }
 
-    .zone-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem;
-      letter-spacing: 0.06em;
-      margin-bottom: 16px;
-    }
-
-    .zone-card p {
-      color: var(--grey);
-      font-size: 0.95rem;
+    .food-desc {
+      font-size: 0.88rem;
       font-weight: 300;
-      line-height: 1.8;
-      margin-bottom: 28px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .food-card:not(:first-child) .food-desc { color: var(--muted); }
+    .food-card:first-child .food-desc { color: rgba(255,255,255,0.65); }
+
+    .food-special {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--orange);
+      margin-top: 10px;
+    }
+
+    .food-card:first-child .food-special { color: var(--yellow); }
+
+    .food-hours {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .food-card:first-child .food-hours { color: rgba(255,255,255,0.4); }
+
+    /* ─── DRINKS ─── */
+    #drinks { background: var(--off-white); }
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .drinks-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+    }
+
+    .drinks-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+
+    .drinks-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .drinks-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .drinks-list {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .drinks-list li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .drinks-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+    }
+
+    .events-banner {
+      background: var(--blue);
+      border-radius: 16px;
+      padding: 32px 36px;
+      color: white;
+    }
+
+    .events-banner h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .events-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .event-item h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .event-item p {
+      font-size: 0.78rem;
+      opacity: 0.7;
+      font-weight: 300;
+    }
+
+    /* ─── EVENTS ─── */
+    #events { background: white; }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .event-card {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: transform 0.2s;
+    }
+
+    .event-card:hover { transform: translateY(-2px); }
+
+    .event-card.featured {
+      grid-column: span 2;
+      background: var(--green);
+      color: white;
+      border-color: transparent;
+    }
+
+    .event-date-box {
+      background: white;
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 56px;
+    }
+
+    .event-card.featured .event-date-box {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .event-month {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .event-card.featured .event-month { color: rgba(255,255,255,0.7); }
+
+    .event-day {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .event-card.featured .event-day { color: white; }
+
+    .event-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .event-card.featured .event-info h3 { color: white; }
+
+    .event-info p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .event-card.featured .event-info p { color: rgba(255,255,255,0.75); }
+
+    .event-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .event-tag.dark {
+      background: var(--light);
+      color: var(--muted);
     }
 
     /* ─── HOURS ─── */
-    #hours { background: var(--dark); }
+    #hours { background: var(--off-white); }
 
     .hours-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 16px;
     }
 
     .hours-card {
-      background: var(--card);
+      background: white;
+      border-radius: 16px;
+      padding: 32px 28px;
       border: 1px solid var(--border);
-      padding: 36px 28px;
+    }
+
+    .hours-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .hours-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-      color: var(--neon);
-      margin-bottom: 24px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
     }
 
     .hours-row {
       display: flex;
       justify-content: space-between;
       padding: 9px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--light);
       font-size: 0.88rem;
     }
 
-    .hours-row .day { color: var(--light); font-weight: 500; }
-    .hours-row .time { color: var(--grey); }
-    .hours-row .closed { color: var(--red); }
+    .hours-row .day { color: var(--text); font-weight: 500; }
+    .hours-row .time { color: var(--muted); }
+    .hours-row .closed { color: var(--orange); font-weight: 500; }
+    .hours-note { margin-top: 16px; font-size: 0.78rem; color: var(--muted); font-style: italic; }
 
-    .hours-note {
-      margin-top: 16px;
-      font-size: 0.78rem;
-      color: var(--grey);
-      font-style: italic;
-    }
+    /* ─── CONTACT ─── */
+    #contact { background: white; }
 
-    /* ─── FIND US ─── */
-    #find-us { background: var(--black); padding-bottom: 0; }
-
-    .find-grid {
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: start;
-      padding-bottom: 96px;
     }
 
     .contact-item {
@@ -491,11 +726,10 @@
     }
 
     .contact-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--neon-dim);
-      border: 1px solid rgba(232,255,0,0.2);
-      border-radius: 2px;
+      width: 44px;
+      height: 44px;
+      background: var(--light);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -505,149 +739,166 @@
 
     .contact-text strong {
       display: block;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--neon);
+      letter-spacing: 0.12em;
+      color: var(--muted);
       font-weight: 700;
       margin-bottom: 4px;
     }
 
     .contact-text a {
-      color: var(--light);
+      color: var(--text);
       text-decoration: none;
       font-size: 0.95rem;
-      font-weight: 300;
+      font-weight: 400;
+      transition: color 0.2s;
     }
 
-    .contact-text a:hover { color: var(--neon); }
+    .contact-text a:hover { color: var(--orange); }
+    .contact-text p { color: var(--text); font-size: 0.95rem; font-weight: 300; }
 
-    .contact-text p {
-      color: var(--light);
-      font-size: 0.95rem;
-      font-weight: 300;
-    }
-
-    .links-row {
+    .quick-links {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 36px;
+      margin-top: 32px;
     }
 
-    .link-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--light);
+    .quick-link {
+      background: var(--light);
+      color: var(--text);
       padding: 10px 20px;
-      text-decoration: none;
+      border-radius: 100px;
       font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: border-color 0.2s, color 0.2s;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border: 1.5px solid var(--border);
     }
 
-    .link-chip:hover { border-color: var(--neon); color: var(--neon); }
+    .quick-link:hover { background: var(--text); color: white; border-color: var(--text); }
 
     .map-wrap iframe {
       width: 100%;
-      height: 320px;
+      height: 340px;
       border: 0;
-      border-radius: 2px;
-      filter: grayscale(80%) invert(90%) hue-rotate(180deg);
+      border-radius: 16px;
+      filter: grayscale(20%);
     }
 
     /* ─── CTA BANNER ─── */
     .cta-banner {
-      background: var(--neon);
-      padding: 64px 48px;
+      background: var(--orange);
+      padding: 80px 48px;
       text-align: center;
     }
 
     .cta-banner h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Syne', sans-serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
-      letter-spacing: 0.06em;
-      color: var(--black);
-      margin-bottom: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 14px;
     }
 
     .cta-banner p {
-      color: rgba(0,0,0,0.6);
+      color: rgba(255,255,255,0.75);
       font-size: 1rem;
-      margin-bottom: 32px;
-      font-weight: 400;
+      margin-bottom: 36px;
+      font-weight: 300;
     }
 
-    .btn-dark {
-      background: var(--black);
-      color: var(--neon);
+    .btn-white {
+      background: white;
+      color: var(--orange);
       padding: 16px 40px;
-      font-size: 0.82rem;
+      border-radius: 100px;
+      font-size: 0.88rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       text-decoration: none;
-      border-radius: 2px;
       display: inline-block;
       transition: opacity 0.2s;
     }
 
-    .btn-dark:hover { opacity: 0.8; }
+    .btn-white:hover { opacity: 0.9; }
 
     /* ─── FOOTER ─── */
     footer {
-      background: var(--dark);
-      border-top: 1px solid var(--border);
-      padding: 36px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
+      background: var(--text);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
     }
 
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.1em;
-      color: var(--neon);
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
+    .footer-logo span { color: var(--orange); }
+
+    .footer-tagline {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      font-weight: 300;
+      margin-bottom: 24px;
     }
 
-    .footer-links a {
-      color: var(--grey);
+    .footer-contact a {
+      color: rgba(255,255,255,0.6);
       text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 6px;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--neon); }
+    .footer-contact a:hover { color: white; }
 
-    .footer-copy {
-      color: var(--border);
-      font-size: 0.75rem;
-      width: 100%;
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      margin-top: 4px;
+    .footer-links-col h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 16px;
+    }
+
+    .footer-links-col a {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-links-col a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 40px;
+      padding-top: 24px;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.78rem;
+      grid-column: span 2;
     }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .activities-grid { grid-template-columns: repeat(2, 1fr); }
-      .zones-grid { grid-template-columns: 1fr; }
-      .hours-grid { grid-template-columns: 1fr; }
-      .find-grid { grid-template-columns: 1fr; gap: 40px; }
+      .drinks-grid { grid-template-columns: 1fr 1fr; }
+      .events-row { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -655,8 +906,21 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       section { padding: 64px 24px; }
+      .hero { padding: 80px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-cards { display: none; }
       .activities-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; text-align: center; padding: 28px 24px; }
+      .food-grid { grid-template-columns: 1fr; }
+      .food-card:first-child { grid-column: span 1; }
+      .drinks-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+      .event-card.featured { grid-column: span 1; }
+      .events-row { grid-template-columns: 1fr; }
+      .hours-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { grid-template-columns: 1fr; padding: 36px 24px; }
+      .footer-bottom { grid-column: span 1; }
+      .pills-strip { padding: 16px 24px; }
     }
   </style>
 </head>
@@ -664,13 +928,15 @@
 
   <!-- ─── NAV ─── -->
   <nav>
-    <a href="#" class="nav-logo">PLAY</a>
+    <a href="#" class="nav-logo">PL<span>A</span>Y</a>
     <ul class="nav-links">
       <li><a href="#activities">Activities</a></li>
-      <li><a href="#zones">Drinks & Food</a></li>
+      <li><a href="#food">Food</a></li>
+      <li><a href="#drinks">Drinks</a></li>
+      <li><a href="#events">Events</a></li>
       <li><a href="#hours">Hours</a></li>
-      <li><a href="#find-us">Contact</a></li>
-      <li><a href="https://playeugene.com/reservations" target="_blank" class="nav-btn">Book Now</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Party</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -680,94 +946,294 @@
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="#activities" onclick="toggleMenu()">Activities</a></li>
-      <li><a href="#zones" onclick="toggleMenu()">Drinks & Food</a></li>
+      <li><a href="#food" onclick="toggleMenu()">Food</a></li>
+      <li><a href="#drinks" onclick="toggleMenu()">Drinks</a></li>
+      <li><a href="#events" onclick="toggleMenu()">Events</a></li>
       <li><a href="#hours" onclick="toggleMenu()">Hours</a></li>
-      <li><a href="#find-us" onclick="toggleMenu()">Contact</a></li>
-      <li><a href="https://playeugene.com/reservations" target="_blank" onclick="toggleMenu()">Book Now</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">Contact & Book</a></li>
     </ul>
   </div>
 
   <!-- ─── HERO ─── -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-content">
-      <div class="hero-tag">Eugene, Oregon &bull; 232 W 5th Ave</div>
-      <h1>COME<br><span>PLAY.</span></h1>
-      <p class="hero-sub">Batting cages, immersive VR golf, dart lanes, arcade, cocktail lounge, and beer hall — your inner child runs wild here, no matter how old you are.</p>
-      <div class="hero-buttons">
-        <a href="https://playeugene.com/reservations" target="_blank" class="btn-neon">Book a Party</a>
-        <a href="#activities" class="btn-ghost">See What's Here</a>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Eugene, Oregon &bull; Open Now</div>
+        <h1>
+          <span class="word-food">Food,</span><br>
+          <span class="word-drinks">Drinks,</span><br>
+          <span class="word-fun">&amp; Fun.</span>
+        </h1>
+        <p class="hero-desc">Your inner child runs wild here, no matter how old you are. Batting cages, VR golf, arcade, dart lanes, cocktail lounge, beer hall, and 5 incredible food trucks — all under one roof.</p>
+        <div class="hero-buttons">
+          <a href="#activities" class="btn-primary">See What's Here</a>
+          <a href="#contact" class="btn-secondary">Book a Party</a>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-icon">⭐</div>
+          <h3>4.7 Stars — 164 Reviews</h3>
+          <p>Eugene's favorite hangout spot for all ages</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">⚾</div>
+          <h3>Batting Cages</h3>
+          <p>Walk-in or private rental</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">⛳</div>
+          <h3>Immersive VR Golf</h3>
+          <p>World-class courses in Eugene</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🍺</div>
+          <h3>30+ Beers on Draft</h3>
+          <p>Beer hall + 21+ cocktail lounge</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🍔</div>
+          <h3>5 Food Trucks</h3>
+          <p>Always something delicious on site</p>
+        </div>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
   </section>
+
+  <!-- ─── PILLS ─── -->
+  <div class="pills-strip">
+    <div class="pill">Batting Cages</div>
+    <div class="pill">VR Golf</div>
+    <div class="pill">Dart Lanes</div>
+    <div class="pill">Arcade</div>
+    <div class="pill">Beer Hall</div>
+    <div class="pill">Cocktail Lounge (21+)</div>
+    <div class="pill">5 Food Trucks</div>
+    <div class="pill">Family Friendly</div>
+    <div class="pill">Private Rentals</div>
+  </div>
 
   <!-- ─── ACTIVITIES ─── -->
   <section id="activities">
     <div class="section-inner">
-      <p class="section-tag">What We've Got</p>
+      <p class="section-tag">So Many Ways to Play</p>
       <h2 class="section-title">Activities</h2>
-      <p class="section-desc">So many ways to play. Pick your adventure — or try them all.</p>
+      <p class="section-desc">From toddlers to adults — there's something here for everyone. Serious players and casual fun-seekers welcome.</p>
       <div class="activities-grid">
         <div class="activity-card">
+          <div class="activity-accent accent-orange"></div>
           <span class="activity-icon">⚾</span>
           <h3>Batting Cages</h3>
-          <p>Step up to the plate and take your cuts. Available for walk-ins and private rentals.</p>
+          <p>Step up to the plate and take your cuts. Available for walk-ins during regular hours or book for a private rental anytime.</p>
           <span class="activity-badge">Private Rentals Available</span>
         </div>
         <div class="activity-card">
+          <div class="activity-accent accent-blue"></div>
           <span class="activity-icon">⛳</span>
           <h3>Immersive VR Golf</h3>
-          <p>Teleport to world-class courses without leaving Eugene. Full immersive virtual reality golf experience.</p>
-          <span class="activity-badge">Immersive Experience</span>
+          <p>Teleport to world-class courses without leaving Eugene. Full immersive virtual reality golf — no clubs required.</p>
+          <span class="activity-badge">All Skill Levels</span>
         </div>
         <div class="activity-card">
+          <div class="activity-accent accent-green"></div>
           <span class="activity-icon">🎯</span>
           <h3>Dart Lanes</h3>
-          <p>Modern dart lanes for casual fun or competitive play. Great for groups of any size.</p>
+          <p>Modern dart lanes for casual fun or competitive play. Great for groups — grab a drink and throw some darts.</p>
         </div>
         <div class="activity-card">
+          <div class="activity-accent accent-purple"></div>
           <span class="activity-icon">🕹️</span>
           <h3>Arcade</h3>
-          <p>Classic and modern arcade games for all ages. Compete, score, and relive your childhood.</p>
+          <p>7 pinball machines, Cruisin' Exotica (free play!), claw machine, photo booth, 20+ classic games, Pop-a-Shot, Bubble Hockey, Minecraft multiplayer, and Skeeball. Bring quarters or use the change machine.</p>
+          <span class="activity-badge">All Ages</span>
         </div>
         <div class="activity-card">
+          <div class="activity-accent accent-yellow"></div>
           <span class="activity-icon">🍺</span>
           <h3>Beer Hall</h3>
-          <p>A full beer hall to kick back and enjoy a cold one between rounds. Great for groups.</p>
+          <p>One of Eugene's finest beer halls with 30+ options on draft — beer, cider, seltzer, kombucha, and soda. Plenty of non-alcoholic options too.</p>
         </div>
         <div class="activity-card">
-          <span class="activity-icon">🍔</span>
-          <h3>Food Carts</h3>
-          <p>We always have food. Rotating food carts mean there's always something fresh and delicious on site.</p>
-          <span class="activity-badge">Always Open</span>
+          <div class="activity-accent accent-pink"></div>
+          <span class="activity-icon">🍸</span>
+          <h3>Cocktail Lounge (21+)</h3>
+          <p>A kid-free zone with craft cocktails, experienced bartenders, two dart boards, and TVs. Seasonal signature cocktail menu that rotates every season.</p>
+          <span class="activity-badge">21+ Only</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── ZONES ─── -->
-  <section id="zones">
+  <!-- ─── FOOD ─── -->
+  <section id="food">
     <div class="section-inner">
-      <p class="section-tag">Two Experiences</p>
-      <h2 class="section-title">Something for Everyone</h2>
-      <p class="section-desc">Bring the whole family or make it a 21+ night — we've got a space for both.</p>
-      <div class="zones-grid">
-        <div class="zone-card family">
-          <p class="zone-label">Family Friendly</p>
-          <h3>All Ages Welcome</h3>
-          <p>Kids and families can enjoy age-specific adventures throughout the venue. The arcade, batting cages, and VR golf are all family-friendly fun where everyone can join in.</p>
-          <a href="#activities" class="btn-ghost">See Activities</a>
+      <p class="section-tag">Always Something Fresh</p>
+      <h2 class="section-title">Food Trucks</h2>
+      <p class="section-desc">5 locally owned and operated food trucks on our south-facing patio. Hours vary but we always have food at PLAY.</p>
+      <div class="food-grid">
+        <div class="food-card">
+          <div class="food-header">
+            <div class="food-name">Bounty</div>
+            <span class="food-status status-white">Charcuterie & More</span>
+          </div>
+          <p class="food-desc">Thoughtfully designed charcuterie & cheese boards, inspired sandwiches, and more. Perfect for sharing between games.</p>
+          <p class="food-special">🍔 Wednesdays: Burgers & Brews — draft beverages on happy hour with any burger purchase.</p>
+          <p class="food-hours">Closed Mon lunch (opens 5pm). Open Tue–Sun.</p>
         </div>
-        <div class="zone-card adults">
-          <p class="zone-label">21+ Zone</p>
-          <h3>Cocktail Lounge</h3>
-          <p>Adults can retreat to our kid-free cocktail lounge for craft drinks in a relaxed, elevated atmosphere. The perfect spot to unwind between games or settle in for the evening.</p>
-          <a href="#hours" class="btn-neon">View Lounge Hours</a>
+        <div class="food-card">
+          <div class="food-header">
+            <div class="food-name">Dos Agaves</div>
+            <span class="food-status status-open">Mexican</span>
+          </div>
+          <p class="food-desc">Delicious Mexican food made from scratch by locally owned 30-year Eugene residents, bringing their cultural and traditional cooking experience to share.</p>
+          <p class="food-special">🌮 Taco Tuesday: rotating specials on freshly made tortillas + margarita specials in the Cocktail Lounge.</p>
+          <p class="food-hours">Closed Sundays.</p>
+        </div>
+        <div class="food-card">
+          <div class="food-header">
+            <div class="food-name">A Little Pizza Oregon</div>
+            <span class="food-status status-open">Detroit Style Pizza</span>
+          </div>
+          <p class="food-desc">An Oregonian take on Detroit Style Pizza. Dough made with special yeast and organic flour, bulk fermented 48 hours for best flavor. Baked until the cheese around the edges is perfectly caramelized.</p>
+          <p class="food-hours">Closed Sunday–Tuesday.</p>
+        </div>
+        <div class="food-card">
+          <div class="food-header">
+            <div class="food-name">Kazuji San</div>
+            <span class="food-status status-open">Japanese</span>
+          </div>
+          <p class="food-desc">Japanese style rice bowls from Yumi Sato — a professional in the kitchen whose experience is showcased in the quality of every bowl.</p>
+          <p class="food-hours">Closed Tuesdays all day. Closed lunch Wednesdays.</p>
+        </div>
+        <div class="food-card">
+          <div class="food-header">
+            <div class="food-name">Paper Plate BBQ</div>
+            <span class="food-status status-note">BBQ</span>
+          </div>
+          <p class="food-desc">Moist brisket, crispy pork belly burnt ends, cheesy taters gratinadas, cheddar grits, pickled veg — BBQ that eats like a fat tray of charcuterie.</p>
+          <p class="food-hours">Closed Mondays. Tue–Wed 11:30am–2pm. Thu–Sun 11:30am–8pm (or sold out).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DRINKS ─── -->
+  <section id="drinks">
+    <div class="section-inner">
+      <p class="section-tag">Fill Your Cup</p>
+      <h2 class="section-title">Drinks</h2>
+      <p class="section-desc">Whether you're looking for a cold craft beer, a seasonal cocktail, or a great non-alcoholic option — we've got you covered.</p>
+      <div class="drinks-grid">
+        <div class="drinks-card">
+          <span class="drinks-icon">🍺</span>
+          <h3>Beer Hall</h3>
+          <p>One of Eugene's finest taprooms with 30+ options on draft — a diverse selection for every taste.</p>
+          <ul class="drinks-list">
+            <li>20+ craft beers, IPAs, sours, imports</li>
+            <li>Ciders, seltzers, and kombucha</li>
+            <li>20+ non-alcoholic options</li>
+            <li>20+ craft sodas & botanically infused drinks</li>
+            <li>Iced teas and mocktails</li>
+          </ul>
+        </div>
+        <div class="drinks-card">
+          <span class="drinks-icon">🍸</span>
+          <h3>Cocktail Lounge (21+)</h3>
+          <p>Craft cocktails, experienced bartenders, and a rotating seasonal menu. Two dart boards and TVs — a space designed for adults.</p>
+          <ul class="drinks-list">
+            <li>Seasonal signature cocktails</li>
+            <li>$9 Margarita Specials on Taco Tuesdays</li>
+            <li>Craft beer + cocktail pairing</li>
+            <li>Kid-free environment</li>
+          </ul>
+        </div>
+        <div class="drinks-card">
+          <span class="drinks-icon">🎵</span>
+          <h3>Weekly Drink Events</h3>
+          <p>Regular events in the lounge keep things interesting all week long.</p>
+          <ul class="drinks-list">
+            <li>Thursdays 6pm — PLAY: Records (all-vinyl DJ sets)</li>
+            <li>Fridays biweekly 8pm — Soul Sessions (electronic)</li>
+            <li>Last Saturday monthly 8pm — Reggae Riddims</li>
+            <li>Wednesdays — Burgers & Brews happy hour</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EVENTS ─── -->
+  <section id="events">
+    <div class="section-inner">
+      <p class="section-tag">What's Coming Up</p>
+      <h2 class="section-title">Events</h2>
+      <p class="section-desc">Something happening every week. Check back often — the calendar fills up fast.</p>
+      <div class="events-grid">
+        <div class="event-card featured">
+          <div class="event-date-box">
+            <div class="event-month">Apr</div>
+            <div class="event-day">26</div>
+          </div>
+          <div class="event-info">
+            <h3>Family Day & Earth Day 🌍</h3>
+            <p>Free family-friendly event 11:30am–6pm. Golf suite transformed into a children's sensory room with 100s of balloons and laser lights. Free Magic Show with Dr. Delusion at 4pm. Kids First engagement noon–2pm.</p>
+            <span class="event-tag">Free Entry</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date-box">
+            <div class="event-month">Apr</div>
+            <div class="event-day">20</div>
+          </div>
+          <div class="event-info">
+            <h3>Monday Night Trivia</h3>
+            <p>Every Monday at 7pm. Come early for dinner and snag a table. Hosted by FWD Trivia.</p>
+            <span class="event-tag dark">Every Monday</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date-box">
+            <div class="event-month">Apr</div>
+            <div class="event-day">21</div>
+          </div>
+          <div class="event-info">
+            <h3>Tuesday Night Bingo</h3>
+            <p>Every Tuesday at 7pm. All ages until 9pm. $1 Bingo cards (3 boards each). Win cash! Hosted by Judy Jitsu.</p>
+            <span class="event-tag dark">Every Tuesday</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date-box">
+            <div class="event-month">Apr</div>
+            <div class="event-day">23</div>
+          </div>
+          <div class="event-info">
+            <h3>PLAY: Records with Gigantic Brewing</h3>
+            <p>All-vinyl DJ set featuring Ben Love, founder of Gigantic Brewing. Special tap takeover with Spirit Bomb IPA, Wonder Crusher IPA, Kolschtastic & more.</p>
+            <span class="event-tag dark">21+</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date-box">
+            <div class="event-month">Apr</div>
+            <div class="event-day">24</div>
+          </div>
+          <div class="event-info">
+            <h3>Live Music: Calico Crows</h3>
+            <p>Song-driven Americana with roots and indie folk influences. Featuring Brad Nolen, Devin Newman, Terry Travis & Titus Young.</p>
+            <span class="event-tag dark">Live Music</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date-box">
+            <div class="event-month">Apr</div>
+            <div class="event-day">25</div>
+          </div>
+          <div class="event-info">
+            <h3>Reggae Riddim — Grand Finale</h3>
+            <p>The final Reggae Riddim for the foreseeable future. DJ Xacto with special guest King Toby. Ska, Rocksteady, Roots, Dancehall, and Dub.</p>
+            <span class="event-tag dark">21+ · No Cover</span>
+          </div>
         </div>
       </div>
     </div>
@@ -778,10 +1244,13 @@
     <div class="section-inner">
       <p class="section-tag">Plan Your Visit</p>
       <h2 class="section-title">Hours</h2>
-      <p class="section-desc">We're open most days — come play when it suits you.</p>
+      <p class="section-desc">Open most days — come when it suits you. Large free parking lot and street parking available.</p>
       <div class="hours-grid">
         <div class="hours-card">
-          <h3>Main Venue</h3>
+          <div class="hours-card-header">
+            <div class="hours-dot" style="background:var(--orange)"></div>
+            <h3>Main Venue</h3>
+          </div>
           <div class="hours-row"><span class="day">Monday</span><span class="time">11:30am – 10pm</span></div>
           <div class="hours-row"><span class="day">Tuesday</span><span class="time">11:30am – 10pm</span></div>
           <div class="hours-row"><span class="day">Wednesday</span><span class="time">11:30am – 10pm</span></div>
@@ -791,7 +1260,10 @@
           <div class="hours-row"><span class="day">Sunday</span><span class="time">11:30am – 8pm</span></div>
         </div>
         <div class="hours-card">
-          <h3>Cocktail Lounge (21+)</h3>
+          <div class="hours-card-header">
+            <div class="hours-dot" style="background:var(--purple)"></div>
+            <h3>Cocktail Lounge (21+)</h3>
+          </div>
           <div class="hours-row"><span class="day">Monday</span><span class="time">5pm – 10pm</span></div>
           <div class="hours-row"><span class="day">Tuesday</span><span class="time">5pm – 10pm</span></div>
           <div class="hours-row"><span class="day">Wednesday</span><span class="time">5pm – 10pm</span></div>
@@ -801,7 +1273,10 @@
           <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
         </div>
         <div class="hours-card">
-          <h3>Batting Cages</h3>
+          <div class="hours-card-header">
+            <div class="hours-dot" style="background:var(--blue)"></div>
+            <h3>Batting Cages</h3>
+          </div>
           <div class="hours-row"><span class="day">Monday</span><span class="closed">Closed</span></div>
           <div class="hours-row"><span class="day">Tuesday</span><span class="closed">Closed</span></div>
           <div class="hours-row"><span class="day">Wednesday</span><span class="time">4pm – 8pm</span></div>
@@ -815,18 +1290,25 @@
     </div>
   </section>
 
-  <!-- ─── FIND US ─── -->
-  <section id="find-us">
+  <!-- ─── CTA ─── -->
+  <div class="cta-banner">
+    <h2>Ready to Play?</h2>
+    <p>Book a party, bring the family, or just show up — we'll handle the rest.</p>
+    <a href="#contact" class="btn-white">Book a Party</a>
+  </div>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
     <div class="section-inner">
-      <p class="section-tag">Find Us</p>
-      <h2 class="section-title">Come Play</h2>
-      <div class="find-grid">
+      <p class="section-tag">Come Find Us</p>
+      <h2 class="section-title">Contact & Location</h2>
+      <div class="contact-grid">
         <div>
           <div class="contact-item">
             <div class="contact-icon">📍</div>
             <div class="contact-text">
               <strong>Address</strong>
-              <p>232 West 5th Avenue<br>Eugene, Oregon 97401</p>
+              <p>232 West 5th Avenue<br>Eugene, Oregon 97401<br><span style="font-size:0.82rem;color:var(--muted)">Large free parking lot + street parking</span></p>
             </div>
           </div>
           <div class="contact-item">
@@ -837,17 +1319,26 @@
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">🎉</div>
+            <div class="contact-icon">✉️</div>
             <div class="contact-text">
-              <strong>Private Events</strong>
-              <p>Book the whole venue or just the batting cages for your next party or corporate event.</p>
+              <strong>Email</strong>
+              <a href="mailto:Reservations@playeugene.com">Reservations@playeugene.com</a>
             </div>
           </div>
-          <div class="links-row">
-            <a href="https://playeugene.com/reservations" target="_blank" class="link-chip">Reservations</a>
-            <a href="https://playeugene.com/gift-cards" target="_blank" class="link-chip">Gift Cards</a>
-            <a href="https://playeugene.com/rewards-program" target="_blank" class="link-chip">Rewards</a>
-            <a href="https://playeugene.com/liability-waiver" target="_blank" class="link-chip">Waiver</a>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div class="contact-text">
+              <strong>Social</strong>
+              <a href="https://instagram.com/playeug" target="_blank">Instagram: @playeug</a>
+              <a href="https://facebook.com/PLAY.eugene" target="_blank" style="margin-top:4px">Facebook: PLAY.eugene</a>
+            </div>
+          </div>
+          <div class="quick-links">
+            <a href="#" class="quick-link" onclick="alert('Sign up for the newsletter at Reservations@playeugene.com'); return false;">Newsletter</a>
+            <a href="mailto:Reservations@playeugene.com?subject=Gift Card Inquiry" class="quick-link">Gift Cards</a>
+            <a href="mailto:Reservations@playeugene.com?subject=Rewards Program" class="quick-link">Rewards Program</a>
+            <a href="mailto:Reservations@playeugene.com?subject=Liability Waiver" class="quick-link">Liability Waiver</a>
+            <a href="mailto:Reservations@playeugene.com?subject=Party Booking" class="quick-link" style="background:var(--orange);color:white;border-color:var(--orange)">Book a Party</a>
           </div>
         </div>
         <div class="map-wrap">
@@ -862,30 +1353,33 @@
     </div>
   </section>
 
-  <!-- ─── CTA ─── -->
-  <div class="cta-banner">
-    <h2>Ready to Play?</h2>
-    <p>Book a party, grab a drink, or just show up — we'll take it from here.</p>
-    <a href="https://playeugene.com/reservations" target="_blank" class="btn-dark">Book a Party</a>
-  </div>
-
   <!-- ─── FOOTER ─── -->
   <footer>
-    <div class="footer-logo">PLAY</div>
-    <div class="footer-links">
-      <a href="https://playeugene.com/liability-waiver" target="_blank">Liability Waiver</a>
-      <a href="https://playeugene.com/gift-cards" target="_blank">Gift Cards</a>
-      <a href="https://playeugene.com/rewards-program" target="_blank">Rewards</a>
-      <a href="tel:+15413575010">(541) 357-5010</a>
+    <div>
+      <div class="footer-logo">PL<span>A</span>Y</div>
+      <p class="footer-tagline">Food, Drinks & Fun for All Ages — Eugene, Oregon</p>
+      <div class="footer-contact">
+        <a href="tel:+15413575010">(541) 357-5010</a>
+        <a href="mailto:Reservations@playeugene.com">Reservations@playeugene.com</a>
+        <a href="#">232 West 5th Avenue, Eugene, OR 97401</a>
+      </div>
     </div>
-    <p class="footer-copy">© 2026 PLAY Eugene &bull; 232 West 5th Avenue, Eugene, OR 97401</p>
+    <div class="footer-links-col">
+      <h4>Quick Links</h4>
+      <a href="#activities">Activities</a>
+      <a href="#food">Food Trucks</a>
+      <a href="#drinks">Drinks</a>
+      <a href="#events">Events</a>
+      <a href="#hours">Hours</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-bottom">© 2026 PLAY Eugene. All Rights Reserved. &bull; 232 West 5th Avenue, Eugene, OR 97401</div>
   </footer>
 
   <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
-
     document.addEventListener('click', function(e) {
       const menu = document.getElementById('mobileMenu');
       const nav = document.querySelector('nav');
